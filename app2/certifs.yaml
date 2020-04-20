@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: treeptik-galaxy
+  namespace: wordpress
+spec:
+  domains:
+    - wp1.treeptik.dev
+    - wp2.treeptik.dev

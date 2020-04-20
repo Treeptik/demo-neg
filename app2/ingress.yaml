@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: wordpress-ing
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "wordpress-ip"
+    networking.gke.io/managed-certificates: "treeptik-galaxy"
+  namespace: wordpress
+spec:
+  rules:
+    - host: wp1.treeptik.dev
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: wordpress-svc
+              servicePort: 80
+    - host: wp2.treeptik.dev
+      http:
+        paths:
+            - path: /*
+              backend:
+                serviceName: wordpress-svc
+                servicePort: 81

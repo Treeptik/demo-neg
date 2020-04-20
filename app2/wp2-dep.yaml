@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: wordpress-app
+  name: wp2-app
+  namespace: wordpress
+spec:
+  selector:
+    matchLabels:
+      run: wordpress-app
+  template: # Pod template
+    metadata:
+      labels:
+        run: wordpress-app # Labels Pods from this Deployment
+    spec: # Pod specification; each Pod created by this Deployment has this specification
+      containers:
+        - image: nginx 
+          name: wp2
+          ports:
+            - containerPort: 80
+              protocol: TCP
+  

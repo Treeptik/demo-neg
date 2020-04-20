@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: neg-demo-ing
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "neg-ip"
+    networking.gke.io/managed-certificates: "treeptik-galaxy"
+spec:
+  rules:
+    - host: demo.treeptik.dev
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: neg-demo-svc
+              servicePort: 80
+    - host: foo.treeptik.dev
+      http:
+        paths:
+            - path: /*
+              backend:
+                serviceName: neg-demo-svc
+                servicePort: 81
+    - host: bar.treeptik.dev
+      http:
+        paths:
+            - path: /secure
+              backend:
+                serviceName: neg-demo-svc
+                servicePort: 80
+    - host: champagne1.treeptik.dev
+      http:
+        paths:
+            - path: /*
+              backend:
+                serviceName: neg-demo-svc
+                servicePort: 82

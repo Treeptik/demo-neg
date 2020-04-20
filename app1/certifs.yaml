@@ -1,0 +1,10 @@
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: treeptik-galaxy
+spec:
+  domains:
+    - demo.treeptik.dev
+    - foo.treeptik.dev
+    - bar.treeptik.dev
+    - champagne1.treeptik.dev
